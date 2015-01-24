@@ -1,0 +1,10 @@
+ignore:
+#  Mini Model <minimodel@metamodel.me>
+
+exclude:
+  languages
+
+mapping:
+  "Christopher Boelter <c.boelter@cogizz.de>":
+    - "cogizz <c.boelter@cogizz.de>"
+    - "cboelter <christopher@boelter.eu>"
