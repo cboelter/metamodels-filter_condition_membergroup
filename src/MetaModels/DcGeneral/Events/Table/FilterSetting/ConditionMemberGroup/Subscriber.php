@@ -44,10 +44,6 @@ class Subscriber extends BaseSubscriber
             ->addListener(
                 GetPropertyOptionsEvent::NAME,
                 array($this, 'handleMemberGroup')
-            )
-            ->addListener(
-                ModelToLabelEvent::NAME,
-                array($this, 'modelToLabel')
             );
     }
 
