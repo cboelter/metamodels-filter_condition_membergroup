@@ -18,18 +18,14 @@
 
 namespace MetaModels\Filter\Setting\Condition;
 
-use MetaModels\Filter\Filter;
 use MetaModels\Filter\IFilter;
-use MetaModels\Filter\Rules\Condition\ConditionAnd as FilterRuleAnd;
 use MetaModels\Filter\Setting\WithChildren;
+use Contao\FrontendUser;
 
 /**
  * This filter condition generates a "AND" condition from all child filter settings.
  * The generated rule will only return ids that are mentioned in ALL child rules.
  *
- * @package    MetaModels
- * @subpackage Core
- * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  */
 class ConditionMemberGroup extends WithChildren
 {
@@ -38,15 +34,18 @@ class ConditionMemberGroup extends WithChildren
      */
     public function prepareRules(IFilter $objFilter, $arrFilterUrl)
     {
-        $objSubFilter = new Filter($this->getMetaModel());
+        $member = FrontendUser::getInstance();
 
-        foreach ($this->arrChildren as $objChildSetting) {
-            $objChildSetting->prepareRules($objSubFilter, $arrFilterUrl);
+        if ($this->get('member_group') && $member->isMemberOf($this->get('member_group')) && !$this->get('no_member')) {
+            foreach ($this->arrChildren as $objChildSetting) {
+                $objChildSetting->prepareRules($objFilter, $arrFilterUrl);
+            }
         }
 
-        $objFilterRule = new FilterRuleAnd();
-        $objFilterRule->addChild($objSubFilter);
-
-        $objFilter->addFilterRule($objFilterRule);
+        if ($this->get('no_member') && !FE_USER_LOGGED_IN) {
+            foreach ($this->arrChildren as $objChildSetting) {
+                $objChildSetting->prepareRules($objFilter, $arrFilterUrl);
+            }
+        }
     }
 }

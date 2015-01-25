@@ -17,14 +17,21 @@
  */
 
 use MetaModels\Filter\Setting\Events\CreateFilterSettingFactoryEvent;
-use MetaModels\Filter\Setting\SelectFilterSettingTypeFactory;
+use MetaModels\Filter\Setting\ConditionMemberGroupFilterSettingTypeFactory;
 use MetaModels\MetaModelsEvents;
+use MetaModels\Events\MetaModelsBootEvent;
+use MetaModels\DcGeneral\Events\Table\FilterSetting\ConditionMemberGroup\Subscriber;
 
 return array
 (
+    MetaModelsEvents::SUBSYSTEM_BOOT_BACKEND => array(
+        function (MetaModelsBootEvent $event) {
+            new Subscriber($event->getServiceContainer());
+        }
+    ),
     MetaModelsEvents::FILTER_SETTING_FACTORY_CREATE => array(
         function (CreateFilterSettingFactoryEvent $event) {
-            $event->getFactory()->addTypeFactory(new SelectFilterSettingTypeFactory());
+            $event->getFactory()->addTypeFactory(new ConditionMemberGroupFilterSettingTypeFactory());
         }
     )
 );
