@@ -65,34 +65,14 @@ class Subscriber extends BaseSubscriber
             return;
         }
 
-        $db = $this->getServiceContainer()->getDatabase();
-        $group = $db->prepare("SELECT id, name FROM tl_member_group")->execute();
-        $options = array();
+        $database = $this->getServiceContainer()->getDatabase();
+        $group    = $database->prepare('SELECT id, name FROM tl_member_group')->execute();
+        $options  = array();
 
-        while($group->next()) {
+        while ($group->next()) {
             $options[$group->id] = $group->name;
         }
 
         $event->setOptions($options);
-    }
-
-    /**
-     * Render a filter setting into html.
-     *
-     * @param ModelToLabelEvent $event The event.
-     *
-     * @return void
-     */
-    public function modelToLabel(ModelToLabelEvent $event)
-    {
-        if (($event->getEnvironment()->getDataDefinition()->getName()
-                !== 'tl_metamodel_filtersetting')
-            && $event->getModel()->getProperty('type') == 'conditionmembergroup'
-        ) {
-            return;
-        }
-
-        $environment = $event->getEnvironment();
-        $model       = $event->getModel();
     }
 }
