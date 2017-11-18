@@ -11,8 +11,8 @@
  * @package    MetaModels
  * @subpackage FilterConditionMemberGroup
  * @author     Christopher Boelter <christopher@boelter.eu>
- * @copyright  The MetaModels team.
- * @license    LGPL.
+ * @copyright  2017 Christopher Bölter
+ * @license    https://github.com/cboelter/metamodelsfilter_textcombine/blob/master/LICENSE LGPL-3.0
  * @filesource
  */
 
@@ -20,12 +20,10 @@
 namespace MetaModels\DcGeneral\Events\Table\FilterSetting\ConditionMemberGroup;
 
 use ContaoCommunityAlliance\DcGeneral\Contao\View\Contao2BackendView\Event\GetPropertyOptionsEvent;
-use ContaoCommunityAlliance\DcGeneral\Contao\View\Contao2BackendView\Event\ModelToLabelEvent;
 use MetaModels\DcGeneral\Events\BaseSubscriber;
 
 /**
  * Handle events for tl_metamodel_filtersetting for membergroupcondition.
- *
  */
 class Subscriber extends BaseSubscriber
 {
@@ -34,9 +32,6 @@ class Subscriber extends BaseSubscriber
      * Boot the system in the backend.
      *
      * @return void
-     *
-     * @SuppressWarnings(PHPMD.Superglobals)
-     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
      */
     protected function registerEventsInDispatcher()
     {
@@ -57,7 +52,8 @@ class Subscriber extends BaseSubscriber
     public function handleMemberGroup(GetPropertyOptionsEvent $event)
     {
         if (($event->getEnvironment()->getDataDefinition()->getName() !== 'tl_metamodel_filtersetting')
-            || ($event->getPropertyName() !== 'member_group')) {
+            || ($event->getPropertyName() !== 'member_group')
+        ) {
             return;
         }
 

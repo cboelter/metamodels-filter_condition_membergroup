@@ -11,8 +11,8 @@
  * @package    MetaModels
  * @subpackage FilterConditionMemberGroup
  * @author     Christopher Boelter <christopher@boelter.eu>
- * @copyright  The MetaModels team.
- * @license    LGPL.
+ * @copyright  2017 Christopher Bölter
+ * @license    https://github.com/cboelter/metamodelsfilter_textcombine/blob/master/LICENSE LGPL-3.0
  * @filesource
  */
 
@@ -30,9 +30,9 @@ $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['fields']['member_group'] = arr
     'exclude'   => true,
     'inputType' => 'select',
     'eval'      => array(
-        'tl_class' => 'w50',
-        'includeBlankOption' => true
-    )
+        'tl_class'           => 'w50',
+        'includeBlankOption' => true,
+    ),
 );
 
 $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['fields']['no_member'] = array(
@@ -41,5 +41,5 @@ $GLOBALS['TL_DCA']['tl_metamodel_filtersetting']['fields']['no_member'] = array(
     'inputType' => 'checkbox',
     'eval'      => array(
         'tl_class' => 'w50 m12',
-    )
+    ),
 );

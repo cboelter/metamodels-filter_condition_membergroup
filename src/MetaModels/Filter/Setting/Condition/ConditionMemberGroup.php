@@ -11,8 +11,8 @@
  * @package    MetaModels
  * @subpackage FilterConditionMemberGroup
  * @author     Christopher Boelter <christopher@boelter.eu>
- * @copyright  The MetaModels team.
- * @license    LGPL.
+ * @copyright  2017 Christopher Bölter
+ * @license    https://github.com/cboelter/metamodelsfilter_textcombine/blob/master/LICENSE LGPL-3.0
  * @filesource
  */
 
@@ -23,9 +23,7 @@ use MetaModels\Filter\Setting\WithChildren;
 use Contao\FrontendUser;
 
 /**
- * This filter condition generates a "AND" condition from all child filter settings.
- * The generated rule will only return ids that are mentioned in ALL child rules.
- *
+ * This filter will generate subfilter rules by the current member group.
  */
 class ConditionMemberGroup extends WithChildren
 {

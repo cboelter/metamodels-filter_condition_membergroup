@@ -11,8 +11,8 @@
  * @package    MetaModels
  * @subpackage FilterConditionMemberGroup
  * @author     Christopher Boelter <christopher@boelter.eu>
- * @copyright  The MetaModels team.
- * @license    LGPL.
+ * @copyright  2017 Christopher Bölter
+ * @license    https://github.com/cboelter/metamodelsfilter_textcombine/blob/master/LICENSE LGPL-3.0
  * @filesource
  */
 
@@ -24,14 +24,14 @@ use MetaModels\DcGeneral\Events\Table\FilterSetting\ConditionMemberGroup\Subscri
 
 return array
 (
-    MetaModelsEvents::SUBSYSTEM_BOOT_BACKEND => array(
+    MetaModelsEvents::SUBSYSTEM_BOOT_BACKEND        => array(
         function (MetaModelsBootEvent $event) {
             new Subscriber($event->getServiceContainer());
-        }
+        },
     ),
     MetaModelsEvents::FILTER_SETTING_FACTORY_CREATE => array(
         function (CreateFilterSettingFactoryEvent $event) {
             $event->getFactory()->addTypeFactory(new ConditionMemberGroupFilterSettingTypeFactory());
-        }
-    )
+        },
+    ),
 );

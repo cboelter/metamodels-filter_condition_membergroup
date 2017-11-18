@@ -11,15 +11,15 @@
  * @package    MetaModels
  * @subpackage FilterConditionMemberGroup
  * @author     Christopher Boelter <christopher@boelter.eu>
- * @copyright  The MetaModels team.
- * @license    LGPL.
+ * @copyright  2017 Christopher Bölter
+ * @license    https://github.com/cboelter/metamodelsfilter_textcombine/blob/master/LICENSE LGPL-3.0
  * @filesource
  */
 
 namespace MetaModels\Filter\Setting;
 
 /**
- * Filter type factory for AND filter settings.
+ * Filter type factory for ConditionMemberGroup filter settings.
  */
 class ConditionMemberGroupFilterSettingTypeFactory extends AbstractFilterSettingTypeFactory
 {
