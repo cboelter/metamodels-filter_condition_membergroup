@@ -24,8 +24,8 @@
     "source": "https://github.com/cboelter/metamodels-filter_condition_membergroup"
   },
   "require": {
-    "php": ">=5.3",
-    "contao/core": ">=3.2,<3.5",
+    "php": ">=5.4",
+    "contao/core": "^3.5.5",
     "contao-community-alliance/composer-plugin": "~2.0",
     "metamodels/core": "~2.0"
   },
